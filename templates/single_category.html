@@ -1,0 +1,64 @@
+{% extends 'basic.html' %}
+{% load static %}
+   {% block content %}
+        <div id="main-content" class="container">
+            <h2 id="menu-categories-title" class="text-center">{{category | title}}</h2>
+            {% if val %}
+            <section class="row">
+                <div class="col-sm-6">
+                    <div class="Menu-item-title">
+                        <h3 class="text-center">Veg</h3>
+                        <ul>
+                            {% for item in veg %}
+                                <div class="items_list">
+                                    <li>
+                                        <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
+                                        <div class="cart hidden text-center">
+                                            Add item 
+                                        </div>
+                                    </li>
+                                </div>
+                            {% endfor %}    
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="Menu-item-title">
+                        <h3 class="text-center">Non-veg</h3>
+                        <ul>
+                            {% for item in non_veg %}
+                            <div class="items_list">
+                                <li>
+                                    <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
+                                    <div class="cart hidden text-center">
+                                        Add item 
+                                    </div>
+                                </li>
+                            </div>
+                            {% endfor %} 
+                        </ul>
+                    </div>  
+                </div>
+            </section>
+            {% else %}
+            <section class="Neutral">
+                <div class="col-sm-6">
+                    <div class="Menu-item-title">
+                        <ul>
+                        {% for item in items %}
+                        <div class="items_list">
+                            <li>
+                                <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
+                                <div class="cart hidden text-center">
+                                    Add item 
+                                </div>
+                            </li>
+                        </div>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+        </div><!--Main content-->
+    {% endblock %}

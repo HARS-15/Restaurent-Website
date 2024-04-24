@@ -1,0 +1,37 @@
+{% extends 'basic.html' %}
+{% load static %}
+    {% block content %}
+    <div class="container text-center form-box">
+        <div id="accounts">
+            <div class="invalid">
+                {%for i in messages%}
+                    <h4>{{i}}</h4>
+                {% endfor %}
+            </div>
+            <form id="Register" action="register" class="input-group text-center" method="post">
+                {% csrf_token %}
+                <div>
+                    <input type="text" name="first_name"  class='input-field text-center' placeholder="First Name" required>
+                </div>
+                <div>
+                    <input type="text" name="last_name" class='input-field text-center'placeholder="Last Name">
+                </div>
+                <div>
+                    <input type="text" name="user_name" class='input-field text-center'placeholder="User_name" required>
+                </div>
+                <div>
+                    <input type="email" name="email_id" class='input-field text-center'placeholder="Email_id" required>
+                </div>
+                <div>
+                    <input type="password" name="password" class='input-field text-center'placeholder="Password" required>
+                </div>
+                <div>
+                    <input type="password" name="c_password" class='input-field text-center'placeholder="Confirm Password" required>
+                </div>
+                <div class="Sign_Up">
+                    <button  type="submit" name="Sign Up" class="toggle-btn"><h4>Sign Up</h4></button>
+                </div>
+            </form>
+        </div>    
+    </div>
+    {% endblock %}
