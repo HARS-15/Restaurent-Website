@@ -2,11 +2,11 @@
 {% load static %}
     {% block content %}
         <div id="main-content" class="container">
-            <h2 id="menu-categories-title" class="text-center">Menu</h2>
+            <h2 id="menu-categories-title" class="text-center">MENU</h2>
             <section class="row">
                 {% for item in dest %}
                     <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
-                        <a href="single_category?menu_id={{item.id}}">
+                        <a href="{% url 'single_category' item.id %}">
                             <div class="category-title">
                                 <img width="200" height="200" src="{{item.img.url}}" alt="{{item.name}}">
                                 <span>{{item.name}}</span>

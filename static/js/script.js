@@ -6,6 +6,7 @@ $(function (){
         }
     });
     $(".item_buttons").click(function(event){
+        $(".cart").addClass("hidden");
         $(this).siblings(".cart").toggleClass("hidden");
     });
 });

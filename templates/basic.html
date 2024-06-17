@@ -42,35 +42,35 @@
                                     <br class="hidden-xs">Home</a>
                             </li>
                             <li>
-                                <a href="menu">
+                                <a href="{% url 'menu' %}">
                                     <span class="glyphicon glyphicon-cutlery"></span>
                                     <br class="hidden-xs">Menu</a>
                             </li>
                             {% if user.is_authenticated %}
                                 <li>
-                                    <a href="/">
+                                    <a href="{% url 'profile' %}">
                                         <span class="glyphicon glyphicon-user"></span>
                                         <br class="hidden-xs">{{user.username | title }}</a>
                                 </li>
                                 <li>
-                                    <a href="logout">
+                                    <a href="{% url 'logout' %}">
                                         <span class="glyphicon glyphicon-log-out"></span>
                                         <br class="hidden-xs">Log-out</a>
                                 </li>
                             {% else %}
                                 <li>
-                                    <a href="register">
+                                    <a href="{% url 'register' %}">
                                         <span class="glyphicon glyphicon-list-alt"></span>
                                         <br class="hidden-xs">Register</a>
                                 </li>
                                 <li>
-                                    <a href="login">
+                                    <a href="{% url 'login' %}">
                                         <span class="glyphicon glyphicon-log-in"></span>
                                         <br class="hidden-xs">Login</a>
                                 </li>
                             {% endif %}
                             <li>
-                                <a href="menu">
+                                <a href="{% url 'menu' %}">
                                     <span class="glyphicon glyphicon-info-sign"></span>
                                     <br class="hidden-xs">Reviews</a>
                             </li>
@@ -90,10 +90,10 @@
             </a>
         </div>
         <div id="xs-deliver" class="text-center visible-xs">*We Deliver</div><!--telephone-->
-     
+        <div class="main_content">
         {% block content %}
         {% endblock %}
-
+        </div>
         <footer class="panel-footer">
             <div class="container">
                 <div class="row">

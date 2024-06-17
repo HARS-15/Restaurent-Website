@@ -1,0 +1,31 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% load filters %}
+{% block content %}
+    <div id="main-content" class="container">
+        <form method="post" action="{% url 'order' %}">
+            {% csrf_token %}
+            <section class="Neutral">
+                <div class="col-sm-6">
+                    <div class="Menu-item-title">
+                        <ul>
+                            {% for item, quantity in current_items.items %}
+                            <div class="items_list">
+                                <li>
+                                    {{ item.name | title }}
+                                    <span>{{item.price}}x{{quantity}}</span>
+                                </li>
+                            </div>
+                            {% endfor %}
+                            <hr>
+                            <div class="item-list">
+                                    <li>Total Amount<span>{{total}}</span></li>
+                            </div>
+                        </ul>
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </div>
+{% endblock %}

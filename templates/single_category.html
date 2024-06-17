@@ -14,7 +14,7 @@
                                     <li>
                                         <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
                                         <div class="cart hidden text-center">
-                                            Add item 
+                                            <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Order item</a>
                                         </div>
                                     </li>
                                 </div>
@@ -31,7 +31,7 @@
                                 <li>
                                     <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
                                     <div class="cart hidden text-center">
-                                        Add item 
+                                        <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Add item</a>
                                     </div>
                                 </li>
                             </div>
@@ -50,7 +50,7 @@
                             <li>
                                 <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
                                 <div class="cart hidden text-center">
-                                    Add item 
+                                    <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Add item</a>
                                 </div>
                             </li>
                         </div>

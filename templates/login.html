@@ -5,7 +5,7 @@
         <div id="accounts">
             <div class="invalid">
                 {%for i in messages%}
-                    <h4>{{i}}</h4>
+                    <h3>{{i}}</h3>
                 {% endfor %}
             </div>
             <form id="Login" action="login" class="input-group text-center" method="post">
@@ -16,6 +16,7 @@
                 <div>
                     <input type="password" name="password" class='input-field text-center' placeholder="Password" required>
                 </div>
+                New User?<a href="{% url 'register' %}">Sign up</a>
                 <div class="Sign_In">
                     <button  type="submit" name="Sign In" class="toggle-btn"><h4>Sign In</h4></button>
                 </div>
