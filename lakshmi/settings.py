@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path,os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,15 +79,15 @@ WSGI_APPLICATION = 'lakshmi.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Lakshmi',
-        'USER':'postgres',
-        'PASSWORD':'Lakshmi@8',
-        'HOST':'localhost'
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'FoodItems', 
+        'USER': 'root',  
+        'PASSWORD': 'Lakshmi@815',  
+        'HOST': 'localhost',  
+        'PORT': '3306',  
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
