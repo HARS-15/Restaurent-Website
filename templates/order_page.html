@@ -3,7 +3,7 @@
 {% load filters %}
 {% block content %}
     <div id="main-content" class="container">
-        <form method="post" action="{% url 'order' %}">
+        <form method="post" action="{% url 'order' %}" id="order-form">
             {% csrf_token %}
             <section class="Neutral">
                 <div class="col-sm-6">

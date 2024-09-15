@@ -7,7 +7,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: rgba(99, 102, 89, 0.5); 
+  background-color: rgba(99, 102, 89, 0.5);
 }
 
 .main_content{
@@ -354,10 +354,10 @@ background-color: #e7e7e7;
 }
 
 .Menu-item-title hr {
-  border: none; 
-  border-top: 1px dashed; 
-  width: 100%; 
-  margin: 0 auto; 
+  border: none;
+  border-top: 1px dashed;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .colourmanage{
@@ -366,6 +366,22 @@ background-color: #e7e7e7;
 
 .invalid{
   color:#000;
+}
+
+#existing-message {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #4caf50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    z-index: 1000;
+    max-width: 300px;
+    text-align: center;
 }
 
 @media(min-width:1200px){
@@ -435,7 +451,7 @@ background-color: #e7e7e7;
     padding-top: 5px;
     font-size:6vw;
   }
-  
+
   .col-xxs-12{
     position:relative;
     min-height:1px;

@@ -5,21 +5,44 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
-def single_category(request,menu_id):
-    menu=get_object_or_404(Menu, id=menu_id)
-    if menu.name in ["Ice Creams","Drinks","Meals"]:
-        val=0
-        items=MenuItem.objects.filter(menu_category=menu.name,item_type="NE").order_by('price')
-        return render(request,'single_category.html',{'items':items,'val':val,'category':menu.name,'menu_id':menu_id})
+def single_category(request, menu_id):
+    menu = get_object_or_404(Menu, id=menu_id)
+    if menu.name in ["Ice Creams", "Drinks", "Meals"]:
+        val = 0
+        items = MenuItem.objects.filter(menu_category=menu.name, item_type="NE").order_by('price')
+        unique_items = {}
+        for item in items:
+            if item.name not in unique_items:
+                unique_items[item.name] = item
+        return render(request, 'single_category.html', {
+            'items': list(unique_items.values()),
+            'val': val,
+            'category': menu.name,
+            'menu_id': menu_id
+        })
     else:
-        val=1
-        dest_veg=MenuItem.objects.filter(menu_category=menu.name,item_type="V").order_by('price')
-        dest_non_veg=MenuItem.objects.filter(menu_category=menu.name,item_type="NV").order_by('price')
-        return render(request,'single_category.html',{'veg':dest_veg,'non_veg':dest_non_veg,'category':menu.name,'menu_id':menu_id,"val":val})
+        val = 1
+        dest_veg = MenuItem.objects.filter(menu_category=menu.name, item_type="V").order_by('price')
+        unique_veg_items = {}
+        for item in dest_veg:
+            if item.name not in unique_veg_items:
+                unique_veg_items[item.name] = item
+        dest_non_veg = MenuItem.objects.filter(menu_category=menu.name, item_type="NV").order_by('price')
+        unique_non_veg_items = {}
+        for item in dest_non_veg:
+            if item.name not in unique_non_veg_items:
+                unique_non_veg_items[item.name] = item
+        return render(request, 'single_category.html', {
+            'veg': list(unique_veg_items.values()),
+            'non_veg': list(unique_non_veg_items.values()),
+            'category': menu.name,
+            'menu_id': menu_id,
+            'val': val
+        })
 
 
 def menu(request):
-    dest=Menu.objects.exclude(id=12).order_by('position')
+    dest=Menu.objects.exclude(id=9).order_by('position')
     return render(request,'menu.html',{'dest':dest})
 
 
@@ -51,14 +74,14 @@ def register(request):
             return redirect(register)
     else:
         return render(request,'register.html')
-    
+
 
 def profile(request):
     order_items = request.session.get("order_items", {})
     item_ids=list(order_items.keys())
     current_items = MenuItem.objects.filter(id__in=item_ids)
     item_list = {item: order_items[str(item.id)] for item in current_items}
-    orders=Orders.objects.filter(user=request.user).order_by("-created_at")
+    orders=Orders.objects.filter(user=request.user).order_by("-created_at")[:5]
     return render(request,'profile.html',{"orders":orders,"current_items":item_list})
 
 
@@ -124,7 +147,7 @@ def place_order(request):
         request.session["order_items"] = updated_order_items
         total= sum(item.price * quantity for item, quantity in item_list.items())
         return render(request,'order_page.html',{"current_items":item_list,"total":total})
-    
+
 def order(request):
     if "order_items" in request.session and request.session["order_items"]:
         order=Orders.objects.create(user=request.user)
@@ -138,7 +161,7 @@ def order(request):
         order.save()
         del request.session["order_items"]
         return redirect("/")
-    
+
 def remove(request):
     if "order_items" in request.session and request.session["order_items"]:
         val=request.GET['item_id']

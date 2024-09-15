@@ -17,15 +17,15 @@
                                  {{ item.name | title }}
                                  <span>{{ item.price }}</span>
                               </li>
-                              <li> 
+                              <li>
                                  Qty:<input type="number" class="order-item-quantity-input"
                                              name="quantity_{{ item.id }}"
                                              value="{{ quantity }}"
                                              min="1"
-                                             onkeydown="return false"
+                                             max="10"
                                              onpaste="return false"
                                              style="width: 50px;">
-                                 <span><a href="{% url 'remove' %}?item_id={{ item.id }}" class="btn btn-warning">Remove</a></span>         
+                                 <span><a href="{% url 'remove' %}?item_id={{ item.id }}" class="btn btn-warning">Remove</a></span>
                               </li>
                               <hr style="margin-top:10px;margin-bottom:10px;">
                             </div>

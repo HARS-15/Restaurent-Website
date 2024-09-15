@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!egjwdsbs4bci#wdr3l(wq=3wd&k0thk^gf9b9^tclkg#750!e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['HARSHA0815.pythonanywhere.com']
 
 
 # Application definition
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Restaurent.middleware.AdminAccessMiddleware'
 ]
 
 ROOT_URLCONF = 'lakshmi.urls'
@@ -81,11 +82,11 @@ WSGI_APPLICATION = 'lakshmi.wsgi.application'
 DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'FoodItems', 
-        'USER': 'root',  
-        'PASSWORD': 'Lakshmi@815',  
-        'HOST': 'localhost',  
-        'PORT': '3306',  
+        'NAME': 'HARSHA0815$foodItems_123',
+        'USER': 'HARSHA0815',
+        'PASSWORD': 'Lakshmi@815',
+        'HOST': 'HARSHA0815.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
 

@@ -1,6 +1,12 @@
 from django.contrib import admin
 from django.urls import path,include
+from django.contrib.auth.decorators import user_passes_test
 from . import views
+
+def superuser_required(user):
+    return user.is_authenticated and user.is_superuser
+
+admin.site.login = user_passes_test(superuser_required)(admin.site.login)
 
 urlpatterns = [
     path('',views.main,name='main'),

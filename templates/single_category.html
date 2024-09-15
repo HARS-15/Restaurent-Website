@@ -14,11 +14,17 @@
                                     <li>
                                         <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
                                         <div class="cart hidden text-center">
-                                            <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Order item</a>
+                                            {% if user.is_authenticated %}
+                                                <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}"
+                                                class="add-item-link"
+                                                data-item-name="{{ item.name | title }}">Add item</a>
+                                            {% else %}
+                                                <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Add item</a>
+                                            {% endif %}
                                         </div>
                                     </li>
                                 </div>
-                            {% endfor %}    
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -31,13 +37,19 @@
                                 <li>
                                     <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
                                     <div class="cart hidden text-center">
-                                        <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Add item</a>
+                                        {% if user.is_authenticated %}
+                                            <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}"
+                                            class="add-item-link"
+                                            data-item-name="{{ item.name | title }}">Add item</a>
+                                        {% else %}
+                                            <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Add item</a>
+                                        {% endif %}
                                     </div>
                                 </li>
                             </div>
-                            {% endfor %} 
+                            {% endfor %}
                         </ul>
-                    </div>  
+                    </div>
                 </div>
             </section>
             {% else %}
@@ -50,7 +62,13 @@
                             <li>
                                 <button class="item_buttons">{{item.name | title}}<span>{{item.price}}</span></button>
                                 <div class="cart hidden text-center">
-                                    <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Add item</a>
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}"
+                                        class="add-item-link"
+                                        data-item-name="{{ item.name | title }}">Add item</a>
+                                    {% else %}
+                                        <a href="{% url 'ordered_items' %}?item_id={{ item.id }}&menu_id={{menu_id}}">Add item</a>
+                                    {% endif %}
                                 </div>
                             </li>
                         </div>
